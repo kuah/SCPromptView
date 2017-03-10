@@ -161,7 +161,13 @@
         //显示
         promptView.frame = (CGRect){0,-64-SC_SLIDE_DISTANCE,[UIScreen mainScreen].bounds.size.width,64+SC_SLIDE_DISTANCE};
         promptView.contentView.frame = (CGRect){0,SC_SLIDE_DISTANCE,[UIScreen mainScreen].bounds.size.width,64+SC_SLIDE_DISTANCE};
-        [self showInWindow:promptView];
+        if ([NSThread isMainThread]) {
+            [self showInWindow:promptView];
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+            [self showInWindow:promptView];
+            });
+        }
     }
     
 }
