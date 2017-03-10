@@ -173,7 +173,7 @@
 -(SCPromptView *)getReusableView:(NSString *)showCommand{
     NSMutableArray *queueForCommand = self.reusableViewPool[showCommand];
     NSLog(@"%@",queueForCommand);
-    if (queueForCommand && queueForCommand.count>0) {
+    if (queueForCommand && queueForCommand.count>1) {
         SCPromptView *reusableView = queueForCommand.firstObject;
         [queueForCommand removeObject:reusableView];
         self.reusableViewPool[showCommand] = queueForCommand;
@@ -206,7 +206,11 @@
                 promptView.frame = (CGRect){0,-[promptView sc_slideDistance],promptView.bounds.size};
             } completion:^(BOOL finished) {
                 self.showingView = promptView;
-                [self delayhideInWindow:promptView];
+                __weak id weakSelf = self;
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    [weakSelf delayhideInWindow:promptView];
+                }];
+                
             }];
         }];
     }];
@@ -216,7 +220,9 @@
  *  @param promptView 隐藏的视图
  */
 -(void)delayhideInWindow:(SCPromptView *)promptView{
-    if(!promptView.superview) return;
+    if(!promptView.superview){
+     return;
+    }
     [UIView animateWithDuration:[promptView sc_hideAnimationDuration] delay:[promptView sc_showTime] options:0 animations:^{
         promptView.frame = (CGRect){0,-64-[promptView sc_slideDistance],promptView.bounds.size};
     } completion:^(BOOL finished) {

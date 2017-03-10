@@ -25,7 +25,7 @@
 /**
  *  @brief 子控件读取数据
  */
--(void)sc_loadParam:(id)params;
+-(void)sc_loadParam:(id)param;
 
 @optional
 /**

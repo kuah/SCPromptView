@@ -18,6 +18,7 @@
 		64D87EE61E71C57C00AFCEDB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87EE51E71C57C00AFCEDB /* RootViewController.m */; };
 		64D87EE91E72444200AFCEDB /* TestPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87EE81E72444200AFCEDB /* TestPromptView.m */; };
 		64D87EF51E7252BA00AFCEDB /* SCPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87EF41E7252BA00AFCEDB /* SCPromptView.m */; };
+		64D87EF81E725D0200AFCEDB /* ResultPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87EF71E725D0200AFCEDB /* ResultPromptView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		64D87EE81E72444200AFCEDB /* TestPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPromptView.m; sourceTree = "<group>"; };
 		64D87EF31E7252BA00AFCEDB /* SCPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPromptView.h; sourceTree = "<group>"; };
 		64D87EF41E7252BA00AFCEDB /* SCPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPromptView.m; sourceTree = "<group>"; };
+		64D87EF61E725D0200AFCEDB /* ResultPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultPromptView.h; sourceTree = "<group>"; };
+		64D87EF71E725D0200AFCEDB /* ResultPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultPromptView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				64D87EB11E71B2EE00AFCEDB /* AppDelegate.m */,
 				64D87EB31E71B2EE00AFCEDB /* ViewController.h */,
 				64D87EB41E71B2EE00AFCEDB /* ViewController.m */,
+				64D87EF61E725D0200AFCEDB /* ResultPromptView.h */,
+				64D87EF71E725D0200AFCEDB /* ResultPromptView.m */,
 				64D87EE71E72444200AFCEDB /* TestPromptView.h */,
 				64D87EE81E72444200AFCEDB /* TestPromptView.m */,
 				64D87EE41E71C57C00AFCEDB /* RootViewController.h */,
@@ -302,6 +307,7 @@
 				64D87EB21E71B2EE00AFCEDB /* AppDelegate.m in Sources */,
 				64D87EAF1E71B2EE00AFCEDB /* main.m in Sources */,
 				64D87EF51E7252BA00AFCEDB /* SCPromptView.m in Sources */,
+				64D87EF81E725D0200AFCEDB /* ResultPromptView.m in Sources */,
 				64D87EE61E71C57C00AFCEDB /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
