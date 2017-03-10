@@ -206,11 +206,7 @@
                 promptView.frame = (CGRect){0,-[promptView sc_slideDistance],promptView.bounds.size};
             } completion:^(BOOL finished) {
                 self.showingView = promptView;
-                __weak id weakSelf = self;
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    [weakSelf delayhideInWindow:promptView];
-                }];
-                
+                [self delayhideInWindow:promptView];
             }];
         }];
     }];
