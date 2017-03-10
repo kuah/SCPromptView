@@ -149,6 +149,20 @@
 -(void)didReceivedShowCommand:(NSNotification *)notification{
     NSString *showCommand = notification.userInfo[SCPROMPT_SHOW_COMMAND];
     id param = notification.object;
+    if ([NSThread isMainThread]) {
+        [self matchWithShowCommand:showCommand param:param];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self matchWithShowCommand:showCommand param:param];
+        });
+    }
+}
+/**
+ *  @brief 匹配显示命令和参数
+ *  @param showCommand 显示命令
+ *  @param param 参数
+ */
+-(void)matchWithShowCommand:(NSString *)showCommand param:(id)param{
     NSString *className = self.registerInfo[showCommand];
     if (!className) {
         NSCAssert(0, @"showCommand:%@ 没有被注册",showCommand);
@@ -161,16 +175,10 @@
         //显示
         promptView.frame = (CGRect){0,-64-SC_SLIDE_DISTANCE,[UIScreen mainScreen].bounds.size.width,64+SC_SLIDE_DISTANCE};
         promptView.contentView.frame = (CGRect){0,SC_SLIDE_DISTANCE,[UIScreen mainScreen].bounds.size.width,64+SC_SLIDE_DISTANCE};
-        if ([NSThread isMainThread]) {
-            [self showInWindow:promptView];
-        }else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-            [self showInWindow:promptView];
-            });
-        }
+        [self showInWindow:promptView];
     }
-    
 }
+
 /**
  *  @brief 获取重用的view
  *  @param showCommand 唯一的显示命令
