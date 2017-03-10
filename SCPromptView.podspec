@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name         = 'SCMapCatch'
-  s.version      = '0.2'
+  s.name         = 'SCPromptView'
+  s.version      = '1.0'
   s.summary      = 'A prompt view which show in the top of the screen .'
   s.homepage     = 'https://github.com/Chan4iOS/SCPromptView'
   s.author       = "CT4 => 284766710@qq.com"
