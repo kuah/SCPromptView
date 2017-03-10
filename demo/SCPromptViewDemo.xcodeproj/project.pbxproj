@@ -17,7 +17,7 @@
 		64D87ED31E71B2EF00AFCEDB /* SCPromptViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87ED21E71B2EF00AFCEDB /* SCPromptViewDemoUITests.m */; };
 		64D87EE61E71C57C00AFCEDB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87EE51E71C57C00AFCEDB /* RootViewController.m */; };
 		64D87EE91E72444200AFCEDB /* TestPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87EE81E72444200AFCEDB /* TestPromptView.m */; };
-		64D87EED1E724EBB00AFCEDB /* SCPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87EEC1E724EBB00AFCEDB /* SCPromptView.m */; };
+		64D87EF51E7252BA00AFCEDB /* SCPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D87EF41E7252BA00AFCEDB /* SCPromptView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,8 @@
 		64D87EE51E71C57C00AFCEDB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		64D87EE71E72444200AFCEDB /* TestPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPromptView.h; sourceTree = "<group>"; };
 		64D87EE81E72444200AFCEDB /* TestPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPromptView.m; sourceTree = "<group>"; };
-		64D87EEB1E724EBB00AFCEDB /* SCPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPromptView.h; sourceTree = "<group>"; };
-		64D87EEC1E724EBB00AFCEDB /* SCPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPromptView.m; sourceTree = "<group>"; };
+		64D87EF31E7252BA00AFCEDB /* SCPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPromptView.h; sourceTree = "<group>"; };
+		64D87EF41E7252BA00AFCEDB /* SCPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPromptView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,7 @@
 		64D87EAC1E71B2EE00AFCEDB /* SCPromptViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				64D87EE01E71B30500AFCEDB /* SCPromptView */,
+				64D87EF21E7252BA00AFCEDB /* SCPromptView */,
 				64D87EB01E71B2EE00AFCEDB /* AppDelegate.h */,
 				64D87EB11E71B2EE00AFCEDB /* AppDelegate.m */,
 				64D87EB31E71B2EE00AFCEDB /* ViewController.h */,
@@ -154,22 +154,14 @@
 			path = SCPromptViewDemoUITests;
 			sourceTree = "<group>";
 		};
-		64D87EE01E71B30500AFCEDB /* SCPromptView */ = {
+		64D87EF21E7252BA00AFCEDB /* SCPromptView */ = {
 			isa = PBXGroup;
 			children = (
-				64D87EEA1E724EBB00AFCEDB /* SCPromptView */,
-			);
-			path = SCPromptView;
-			sourceTree = "<group>";
-		};
-		64D87EEA1E724EBB00AFCEDB /* SCPromptView */ = {
-			isa = PBXGroup;
-			children = (
-				64D87EEB1E724EBB00AFCEDB /* SCPromptView.h */,
-				64D87EEC1E724EBB00AFCEDB /* SCPromptView.m */,
+				64D87EF31E7252BA00AFCEDB /* SCPromptView.h */,
+				64D87EF41E7252BA00AFCEDB /* SCPromptView.m */,
 			);
 			name = SCPromptView;
-			path = ../../../SCPromptView;
+			path = ../../SCPromptView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +301,7 @@
 				64D87EE91E72444200AFCEDB /* TestPromptView.m in Sources */,
 				64D87EB21E71B2EE00AFCEDB /* AppDelegate.m in Sources */,
 				64D87EAF1E71B2EE00AFCEDB /* main.m in Sources */,
-				64D87EED1E724EBB00AFCEDB /* SCPromptView.m in Sources */,
+				64D87EF51E7252BA00AFCEDB /* SCPromptView.m in Sources */,
 				64D87EE61E71C57C00AFCEDB /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
