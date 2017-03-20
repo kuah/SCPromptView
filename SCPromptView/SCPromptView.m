@@ -77,7 +77,13 @@
 -(NSTimeInterval)sc_hideAnimationDuration{
     return SC_HIDE_ANIMATION_DURATION;
 }
-
+/**
+ *  @brief 即将执行由手势触发的隐藏
+ *  @return yes 隐藏 / no 不隐藏
+ */
+-(BOOL)sc_willHideByTap{
+    return YES;
+}
 @end
 
 @interface SCPromptManager()
@@ -201,7 +207,14 @@
             [promptView sc_setUpCustomSubViews];
         }
         promptView.showComand = showCommand;
+        
         return promptView;
+    }
+}
+-(void)tapToHide:(UITapGestureRecognizer *)target{
+    SCPromptView *promptView = (SCPromptView *)target.view;
+    if ([promptView sc_willHideByTap]) {
+        [self hideInWindow:promptView];
     }
 }
 /**
@@ -209,7 +222,12 @@
  *  @param promptView 显示的视图
  */
 -(void)showInWindow:(SCPromptView *)promptView{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideInWindow:) object:nil];
     [[[UIApplication sharedApplication].delegate window] addSubview:promptView];
+    if (!promptView.gestureRecognizers || promptView.gestureRecognizers.count==0) {
+        [promptView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToHide:)]];
+    }
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
     [UIView animateWithDuration:[promptView sc_showAnimationDuration] animations:^{
        promptView.frame = (CGRect){0,0,promptView.bounds.size};
     } completion:^(BOOL finished) {
@@ -219,7 +237,6 @@
             [UIView animateWithDuration:0.1 animations:^{
                 promptView.frame = (CGRect){0,-[promptView sc_slideDistance],promptView.bounds.size};
             } completion:^(BOOL finished) {
-                self.showingView = promptView;
                 [self delayhideInWindow:promptView];
             }];
         }];
@@ -233,7 +250,25 @@
     if(!promptView.superview){
      return;
     }
-    [UIView animateWithDuration:[promptView sc_hideAnimationDuration] delay:[promptView sc_showTime] options:0 animations:^{
+//    [UIView animateWithDuration:[promptView sc_hideAnimationDuration] delay:[promptView sc_showTime] options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//        promptView.frame = (CGRect){0,-64-[promptView sc_slideDistance],promptView.bounds.size};
+//    } completion:^(BOOL finished) {
+//        [self hideInWindowDirectly:promptView];
+//    }];
+    //关闭之前的收起的请求
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideInWindow:) object:nil];
+    //设置showingView，把后面的直接从window remove
+    self.showingView = promptView;
+    [self performSelector:@selector(hideInWindow:) withObject:promptView afterDelay:[promptView sc_showTime] ];
+}
+/**
+ *  @brief 动画隐藏promptView
+ *  @param promptView 隐藏的view
+ */
+-(void)hideInWindow:(SCPromptView *)promptView{
+    //不是最顶层的view则不管
+     if (self.showingView != promptView)return;
+    [UIView animateWithDuration:[promptView sc_hideAnimationDuration] animations:^{
         promptView.frame = (CGRect){0,-64-[promptView sc_slideDistance],promptView.bounds.size};
     } completion:^(BOOL finished) {
         [self hideInWindowDirectly:promptView];

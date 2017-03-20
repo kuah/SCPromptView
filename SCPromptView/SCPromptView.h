@@ -48,6 +48,11 @@
  *  @brief 隐藏动画时间
  */
 -(NSTimeInterval)sc_hideAnimationDuration;
+/**
+ *  @brief 即将执行由手势触发的隐藏
+ *  @return yes 隐藏 / no 不隐藏
+ */
+-(BOOL)sc_willHideByTap;
 
 @end
 
