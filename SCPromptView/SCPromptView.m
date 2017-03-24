@@ -192,7 +192,7 @@
  */
 -(SCPromptView *)getReusableView:(NSString *)showCommand{
     NSMutableArray *queueForCommand = self.reusableViewPool[showCommand];
-    NSLog(@"%@",queueForCommand);
+    NSLog(@"reusable objects : %d",(int)queueForCommand.count);
     if (queueForCommand && queueForCommand.count>1) {
         SCPromptView *reusableView = queueForCommand.firstObject;
         [queueForCommand removeObject:reusableView];
