@@ -2,9 +2,9 @@
 [SCPromptView](https://github.com/Chan4iOS/SCPromptView) : 显示在顶部的提示控件
 
 
-**你的star是我最大的动力**
+>**你的star是我最大的动力**
 
-
+##效果
 ![effect.gif](http://upload-images.jianshu.io/upload_images/2170902-85ffe61c9e99f291.gif?imageMogr2/auto-orient/strip)
 
 ##安装
@@ -116,8 +116,9 @@ SCPROMPT_REGISTER([ResultPromptView class], @"result")
 [SCPromptView](https://github.com/Chan4iOS/SCPromptView)  : A prompt view which show in the top of the screen .
 
 
-**your star is my biggest motivation**
+>**Your star is my biggest motivation.**
 
+##Effect
 
 ![effect.gif](http://upload-images.jianshu.io/upload_images/2170902-85ffe61c9e99f291.gif?imageMogr2/auto-orient/strip)
 
