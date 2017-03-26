@@ -4,8 +4,8 @@
 
 >**你的star是我最大的动力**
 
-##效果
-![effect.gif](http://upload-images.jianshu.io/upload_images/2170902-85ffe61c9e99f291.gif?imageMogr2/auto-orient/strip)
+<!--##效果-->
+<!--![effect.gif](http://upload-images.jianshu.io/upload_images/2170902-85ffe61c9e99f291.gif?imageMogr2/auto-orient/strip)-->
 
 ##安装
 ###手动安装
@@ -118,9 +118,9 @@ SCPROMPT_REGISTER([ResultPromptView class], @"result")
 
 >**Your star is my biggest motivation.**
 
-##Effect
+<!--##Effect
 
-![effect.gif](http://upload-images.jianshu.io/upload_images/2170902-85ffe61c9e99f291.gif?imageMogr2/auto-orient/strip)
+![effect.gif](http://upload-images.jianshu.io/upload_images/2170902-85ffe61c9e99f291.gif?imageMogr2/auto-orient/strip)-->
 
 ##Install
 ###Manually
