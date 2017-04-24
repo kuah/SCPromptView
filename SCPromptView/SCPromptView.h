@@ -33,14 +33,6 @@
  */
 -(NSTimeInterval)sc_showTime;
 /**
- *  @brief 滑动距离
- */
--(CGFloat)sc_slideDistance;
-/**
- *  @brief 震动距离
- */
--(CGFloat)sc_shakeDistance;
-/**
  *  @brief 出现动画时间
  */
 -(NSTimeInterval)sc_showAnimationDuration;

@@ -24,8 +24,8 @@
 -(instancetype)init{
     self = [super init];
     [self addSubview:self.contentView];
-    self.frame = (CGRect){0,0,[UIScreen mainScreen].bounds.size.width,64+SC_SLIDE_DISTANCE};
-    self.contentView.frame = (CGRect){0,0,[UIScreen mainScreen].bounds.size.width,64};
+    self.frame = (CGRect){0,0,[UIScreen mainScreen].bounds.size.width,64+[self sc_slideDistance]};
+    self.contentView.frame = (CGRect){0,[self sc_slideDistance],[UIScreen mainScreen].bounds.size.width,64};
     return self;
 }
 -(UIView *)contentView{
@@ -53,18 +53,7 @@
 -(NSTimeInterval)sc_showTime{
     return SC_DEFAULT_SHOW_TIME;
 }
-/**
- *  @brief 滑动距离
- */
--(CGFloat)sc_slideDistance{
-    return SC_SLIDE_DISTANCE;
-}
-/**
- *  @brief 震动距离
- */
--(CGFloat)sc_shakeDistance{
-    return SC_SHAKE_DISTANCE;
-}
+
 /**
  *  @brief 出现动画时间
  */
@@ -83,6 +72,12 @@
  */
 -(BOOL)sc_willHideByTap{
     return YES;
+}
+/**
+ *  @brief 滑动距离 震动动画时候遮挡上一个的view
+ */
+-(CGFloat)sc_slideDistance{
+    return SC_SLIDE_DISTANCE;
 }
 @end
 
@@ -179,8 +174,8 @@
             [promptView sc_loadParam:param];
         }
         //显示
-        promptView.frame = (CGRect){0,-64-SC_SLIDE_DISTANCE,[UIScreen mainScreen].bounds.size.width,64+SC_SLIDE_DISTANCE};
-        promptView.contentView.frame = (CGRect){0,SC_SLIDE_DISTANCE,[UIScreen mainScreen].bounds.size.width,64+SC_SLIDE_DISTANCE};
+        promptView.frame = (CGRect){0,-64-[promptView sc_slideDistance],[UIScreen mainScreen].bounds.size.width,64+[promptView sc_slideDistance]};
+        promptView.contentView.frame = (CGRect){0,[promptView sc_slideDistance],[UIScreen mainScreen].bounds.size.width,64};
         [self showInWindow:promptView];
     }
 }
@@ -192,7 +187,6 @@
  */
 -(SCPromptView *)getReusableView:(NSString *)showCommand{
     NSMutableArray *queueForCommand = self.reusableViewPool[showCommand];
-    NSLog(@"%@",queueForCommand);
     if (queueForCommand && queueForCommand.count>1) {
         SCPromptView *reusableView = queueForCommand.firstObject;
         [queueForCommand removeObject:reusableView];
@@ -227,19 +221,10 @@
     if (!promptView.gestureRecognizers || promptView.gestureRecognizers.count==0) {
         [promptView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToHide:)]];
     }
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-    [UIView animateWithDuration:[promptView sc_showAnimationDuration] animations:^{
-       promptView.frame = (CGRect){0,0,promptView.bounds.size};
+    [UIView animateWithDuration:[promptView sc_showAnimationDuration] delay:0 usingSpringWithDamping:0.5f initialSpringVelocity:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut animations:^{
+         promptView.frame = (CGRect){0,-[promptView sc_slideDistance],promptView.bounds.size};
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1 animations:^{
-            promptView.frame = (CGRect){0,-[promptView sc_slideDistance]-3,promptView.bounds.size};
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.1 animations:^{
-                promptView.frame = (CGRect){0,-[promptView sc_slideDistance],promptView.bounds.size};
-            } completion:^(BOOL finished) {
-                [self delayhideInWindow:promptView];
-            }];
-        }];
+        [self delayhideInWindow:promptView];
     }];
 }
 /**
@@ -250,13 +235,8 @@
     if(!promptView.superview){
      return;
     }
-//    [UIView animateWithDuration:[promptView sc_hideAnimationDuration] delay:[promptView sc_showTime] options:UIViewAnimationOptionAllowUserInteraction animations:^{
-//        promptView.frame = (CGRect){0,-64-[promptView sc_slideDistance],promptView.bounds.size};
-//    } completion:^(BOOL finished) {
-//        [self hideInWindowDirectly:promptView];
-//    }];
     //关闭之前的收起的请求
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideInWindow:) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideInWindow:) object:promptView];
     //设置showingView，把后面的直接从window remove
     self.showingView = promptView;
     [self performSelector:@selector(hideInWindow:) withObject:promptView afterDelay:[promptView sc_showTime] ];

@@ -17,10 +17,13 @@
 
 @implementation TestPromptView
 -(void)sc_setUpCustomSubViews{
-    self.backgroundColor=  [UIColor colorWithRed:(arc4random()%255)/255.f green:(arc4random()%255)/255.f blue:(arc4random()%255)/255.f alpha:1];
+    self.backgroundColor = [UIColor clearColor];
+    self.contentView.backgroundColor=  [UIColor colorWithRed:(arc4random()%255)/255.f green:(arc4random()%255)/255.f blue:(arc4random()%255)/255.f alpha:1];
     UILabel *textLabel = [[UILabel alloc]initWithFrame:self.contentView.bounds];
     textLabel.textColor = [UIColor whiteColor];
     textLabel.textAlignment = NSTextAlignmentCenter;
+    self.contentView.layer.cornerRadius = 5;
+    self.contentView.layer.masksToBounds = YES;
     [self.contentView addSubview:textLabel];
     self.textLabel = textLabel;
 }
