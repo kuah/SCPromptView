@@ -7,18 +7,18 @@
 <!--##效果-->
 <!--![effect.gif](http://upload-images.jianshu.io/upload_images/2170902-85ffe61c9e99f291.gif?imageMogr2/auto-orient/strip)-->
 
-##安装
-###手动安装
+## 安装
+### 手动安装
 下载源码，将`SCPromptView `文件夹拖进项目
 
-###CocoaPod
+### CocoaPod
 ```
 pod 'SCPromptView'
 ```
 
-##使用
+## 使用
 SCPromptView 的用法，与tableView相似
-####创建view
+#### 创建view
 ```
 #import "SCPromptView.h"
 
@@ -53,12 +53,12 @@ SCPromptView 的用法，与tableView相似
 ```
 重写两个基础方法
 
-####注册
+#### 注册
 ```
 SCPROMPT_REGISTER([TestPromptView class],@"test")
 SCPROMPT_REGISTER([ResultPromptView class], @"result")
 ```
-####发送显示命令
+#### 发送显示命令
 ```
 ///随机颜色显示
 -(void)clickBtn:(id)sender{
@@ -68,7 +68,7 @@ SCPROMPT_REGISTER([ResultPromptView class], @"result")
 }
 ```
 
-##其他Api
+## 其他Api
 ```
 @protocol SCPromptViewDelegate <NSObject>
 @required
@@ -122,17 +122,17 @@ SCPROMPT_REGISTER([ResultPromptView class], @"result")
 
 ![effect.gif](http://upload-images.jianshu.io/upload_images/2170902-85ffe61c9e99f291.gif?imageMogr2/auto-orient/strip)-->
 
-##Install
-###Manually
+## Install
+### Manually
 Download the source code , copy  folder `SCPromptView` into your project.
-###CocoaPod
+### CocoaPod
 ```
 pod 'SCPromptView'
 ```
 
-##Usage
+## Usage
 The usage of SCPromptView is similar to the usage of UITableView.
-####Create Custom View
+#### Create Custom View
 ```
 #import "SCPromptView.h"
 
@@ -167,12 +167,12 @@ The usage of SCPromptView is similar to the usage of UITableView.
 ```
 Override two basic function.
 
-####Register
+#### Register
 ```
 SCPROMPT_REGISTER([TestPromptView class],@"test")
 SCPROMPT_REGISTER([ResultPromptView class], @"result")
 ```
-####发送显示命令
+#### 发送显示命令
 ```
 ///show random color
 -(void)clickBtn:(id)sender{
@@ -181,7 +181,7 @@ SCPROMPT_REGISTER([ResultPromptView class], @"result")
     _num++;
 }
 ```
-##Other Api
+## Other Api
 ```
 @protocol SCPromptViewDelegate <NSObject>
 @required
