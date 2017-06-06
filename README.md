@@ -1,6 +1,6 @@
 # SCPromptView
 [SCPromptView](https://github.com/Chan4iOS/SCPromptView) : 显示在顶部的提示控件
-
+[SCPromptView-Swift](https://github.com/Chan4iOS/SCPromptView-Swift)
 
 >**你的star是我最大的动力**
 
