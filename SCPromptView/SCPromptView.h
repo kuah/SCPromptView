@@ -14,7 +14,8 @@
 
 #define SCPROMPT_REGISTER(_CLASS_,COMMANDKEY) \
 [[SCPromptManager sharedManager] registerPromptViewWithClass:_CLASS_ forShowCommand:COMMANDKEY];
-
+#define iPhoneX CGSizeEqualToSize([UIScreen mainScreen].bounds.size, (CGSize){375,812})
+#define SC_SUGGEST_TOP_PADDING (iPhoneX?30:20)
 
 @protocol SCPromptViewDelegate <NSObject>
 @required

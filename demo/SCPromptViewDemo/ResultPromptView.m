@@ -22,11 +22,11 @@
 
 @implementation ResultPromptView
 -(void)sc_setUpCustomSubViews{
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:(CGRect){22,32,20,20}];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:(CGRect){22,SC_SUGGEST_TOP_PADDING+(self.contentView.bounds.size.height-20-SC_SUGGEST_TOP_PADDING)/2,20,20}];
     [self.contentView addSubview:imageView];
     self.imageView = imageView;
     self.backgroundColor = [UIColor whiteColor];
-    UILabel *textLabel = [[UILabel alloc]initWithFrame:(CGRect){50,20,self.contentView.bounds.size.width-50,self.contentView.bounds.size.height-20}];
+    UILabel *textLabel = [[UILabel alloc]initWithFrame:(CGRect){50,topPadding,self.contentView.bounds.size.width-50,self.contentView.bounds.size.height-topPadding}];
     textLabel.textColor = [UIColor lightGrayColor];
     [self.contentView addSubview:textLabel];
     self.textLabel = textLabel;

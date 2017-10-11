@@ -7,11 +7,11 @@
 //
 
 #import "SCPromptView.h"
-#define SC_SLIDE_DISTANCE 8
-#define SC_SHAKE_DISTANCE 3
+#define SC_SLIDE_DISTANCE 18
 #define SC_DEFAULT_SHOW_TIME 2
 #define SC_SHOW_ANIMATION_DURATION 0.35
 #define SC_HIDE_ANIMATION_DURATION 0.2
+#define SC_CONTENT_HEIGHT (iPhoneX?88:64)
 
 @interface SCPromptView ()
 /**
@@ -24,8 +24,8 @@
 -(instancetype)init{
     self = [super init];
     [self addSubview:self.contentView];
-    self.frame = (CGRect){0,0,[UIScreen mainScreen].bounds.size.width,64+[self sc_slideDistance]};
-    self.contentView.frame = (CGRect){0,[self sc_slideDistance],[UIScreen mainScreen].bounds.size.width,64};
+    self.frame = (CGRect){0,0,[UIScreen mainScreen].bounds.size.width,SC_CONTENT_HEIGHT+[self sc_slideDistance]};
+    self.contentView.frame = (CGRect){0,[self sc_slideDistance],[UIScreen mainScreen].bounds.size.width,SC_CONTENT_HEIGHT};
     return self;
 }
 -(UIView *)contentView{
@@ -74,7 +74,7 @@
     return YES;
 }
 /**
- *  @brief 滑动距离 震动动画时候遮挡上一个的view
+ *  @brief 滑动距离 仅仅用于震动动画时候遮挡上一个的view
  */
 -(CGFloat)sc_slideDistance{
     return SC_SLIDE_DISTANCE;
@@ -174,8 +174,8 @@
             [promptView sc_loadParam:param];
         }
         //显示
-        promptView.frame = (CGRect){0,-64-[promptView sc_slideDistance],[UIScreen mainScreen].bounds.size.width,64+[promptView sc_slideDistance]};
-        promptView.contentView.frame = (CGRect){0,[promptView sc_slideDistance],[UIScreen mainScreen].bounds.size.width,64};
+        promptView.frame = (CGRect){0,-SC_CONTENT_HEIGHT-[promptView sc_slideDistance],[UIScreen mainScreen].bounds.size.width,SC_CONTENT_HEIGHT+[promptView sc_slideDistance]};
+        promptView.contentView.frame = (CGRect){0,[promptView sc_slideDistance],[UIScreen mainScreen].bounds.size.width,SC_CONTENT_HEIGHT};
         [self showInWindow:promptView];
     }
 }
@@ -249,7 +249,7 @@
     //不是最顶层的view则不管
      if (self.showingView != promptView)return;
     [UIView animateWithDuration:[promptView sc_hideAnimationDuration] animations:^{
-        promptView.frame = (CGRect){0,-64-[promptView sc_slideDistance],promptView.bounds.size};
+        promptView.frame = (CGRect){0,-SC_CONTENT_HEIGHT-[promptView sc_slideDistance],promptView.bounds.size};
     } completion:^(BOOL finished) {
         [self hideInWindowDirectly:promptView];
     }];
