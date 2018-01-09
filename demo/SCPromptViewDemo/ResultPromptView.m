@@ -22,6 +22,7 @@
 
 @implementation ResultPromptView
 -(void)sc_setUpCustomSubViews{
+    CGFloat topPadding =  SC_SUGGEST_TOP_PADDING;
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:(CGRect){22,SC_SUGGEST_TOP_PADDING+(self.contentView.bounds.size.height-20-SC_SUGGEST_TOP_PADDING)/2,20,20}];
     [self.contentView addSubview:imageView];
     self.imageView = imageView;
