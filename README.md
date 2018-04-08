@@ -1,4 +1,5 @@
 # SCPromptView
+![](https://upload-images.jianshu.io/upload_images/2170902-b6fb40eefb87214e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 [SCPromptView](https://github.com/Chan4iOS/SCPromptView) : 显示在顶部的提示控件
 [SCPromptView-Swift](https://github.com/Chan4iOS/SCPromptView-Swift)
 
