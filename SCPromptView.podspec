@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'SCPromptView'
-  s.version      = '2.1'
+  s.version      = '2.1.1'
   s.summary      = 'A prompt view which show in the top of the screen .'
   s.homepage     = 'https://github.com/Chan4iOS/SCPromptView'
   s.author       = "CT4 => 284766710@qq.com"

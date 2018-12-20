@@ -11,7 +11,7 @@
 #define SC_DEFAULT_SHOW_TIME 2
 #define SC_SHOW_ANIMATION_DURATION 0.35
 #define SC_HIDE_ANIMATION_DURATION 0.2
-#define SC_CONTENT_HEIGHT (iPhoneX?88:64)
+#define SC_CONTENT_HEIGHT (lt_iPhoneX()?88:64)
 
 @interface SCPromptView ()
 /**
@@ -276,5 +276,12 @@
         [self hideInWindowDirectly:currentShowingView];
     }
     _showingView = showingView;
+}
+BOOL lt_iPhoneX(){
+    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+    if (statusBarFrame.size.height > 20.f) {
+        return YES;
+    }
+    return NO;
 }
 @end
